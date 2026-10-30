@@ -32,3 +32,4 @@ mcp_config.json
 *.njsproj
 *.sln
 *.sw?
+*.tsbuildinfo

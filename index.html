@@ -1,23 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weblaze Technologies — Enterprise Software, Web &amp; Mobile Engineering</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <meta name="title" content="Weblaze Technologies — Enterprise Software, Web &amp; Mobile Engineering" />
+    <meta name="description" content="Weblaze Technologies engineers custom software platforms, cloud applications, mobile apps, and enterprise systems designed for scale, speed, and real business impact." />
+    <meta name="keywords" content="Weblaze Technologies, custom software development, web applications, mobile apps, enterprise systems, CRM, ERP, cloud architecture" />
+    <meta name="author" content="Weblaze Technologies" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Mobile Theme Color — Synchronized with Weblaze Dark & Light Modes -->
+    <meta name="theme-color" content="#0D0D0D" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#FAFAFA" media="(prefers-color-scheme: light)" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="/images/webblaze-logo.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Selected Work — WebBlaze Technologies</title>
-  <meta name="description"
-    content="A selection of websites, digital products and business systems designed and developed by WebBlaze." />
-  <!-- Google Fonts Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
-</head>
+    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Weblaze Technologies" />
+    <meta property="og:url" content="https://weblaze.in" />
+    <meta property="og:title" content="Weblaze Technologies — Enterprise Software, Web &amp; Mobile Engineering" />
+    <meta property="og:description" content="Custom software platforms, cloud applications, and enterprise systems engineered for speed and scale." />
+    <meta property="og:image" content="/assets/logo-dark.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
 
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@weblaze" />
+    <meta name="twitter:title" content="Weblaze Technologies — Enterprise Software, Web &amp; Mobile Engineering" />
+    <meta name="twitter:description" content="Custom software platforms, cloud applications, and enterprise systems engineered for speed and scale." />
+    <meta name="twitter:image" content="/assets/logo-dark.png" />
 
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/png" href="/assets/icon-dark.png" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" href="/assets/icon-light.png" media="(prefers-color-scheme: light)" />
+    <link rel="apple-touch-icon" href="/assets/icon-dark.png" />
+
+    <!-- FOUC Prevention Theme Script -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('weblaze_theme');
+          if (saved === 'light') {
+            document.documentElement.classList.remove('dark');
+          } else {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

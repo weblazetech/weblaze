@@ -1,0 +1,588 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   WEBLAZE TECHNOLOGIES — DESIGN SYSTEM & ANIMATIONS
+   Fonts: Poppins (Headings) + Inter (Body)
+   Primary CTA: #1E46EB (Vibrant)
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+
+  /* Light Mode Palette */
+  --canvas: #FAFAFA;
+  --surface: #FFFFFF;
+  --surface-hover: #F8FAFC;
+  --border: #E2E8F0;
+  --border-strong: #CBD5E1;
+
+  --text-heading: #0D0D0D;
+  --text-body: #1E293B;
+  --text-muted: #525866;
+
+  --primary: #1E46EB;
+  --primary-hover: #1738BD;
+  --primary-active: #132D96;
+  --primary-fg: #FAFAFA;
+
+  --accent: #228BE6;
+  --accent-surface: #E7F3FD;
+  --accent-text: #1765A8;
+  --accent-ring: rgba(30, 70, 235, 0.35);
+
+  --card-shadow: 0 4px 20px -2px rgba(13, 13, 13, 0.05), 0 1px 3px 0 rgba(13, 13, 13, 0.03);
+}
+
+.dark {
+  color-scheme: dark;
+
+  /* Dark Mode Palette */
+  --canvas: #0D0D0D;
+  --surface: #161922;
+  --surface-hover: #1C212D;
+  --border: #232734;
+  --border-strong: #33384A;
+
+  --text-heading: #FAFAFA;
+  --text-body: #E2E8F0;
+  --text-muted: #94A3B8;
+
+  --primary: #1E46EB;          /* User selected: #1E46EB (Vibrant) */
+  --primary-hover: #3b66ff;
+  --primary-active: #1636B5;
+  --primary-fg: #FAFAFA;
+
+  --accent: #67BAF4;
+  --accent-surface: rgba(103, 186, 244, 0.12);
+  --accent-text: #67BAF4;
+  --accent-ring: rgba(103, 186, 244, 0.45);
+
+  --card-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* ─── FORM INPUT AUTOFILL & PASTE COLOR PROTECTION ─── */
+/* Prevents Chromium/Safari from turning inputs stark white on paste or autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:active {
+  -webkit-text-fill-color: #0D0D0D !important;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  caret-color: #1E46EB !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover, 
+.dark input:-webkit-autofill:focus, 
+.dark input:-webkit-autofill:active,
+.dark textarea:-webkit-autofill,
+.dark textarea:-webkit-autofill:hover,
+.dark textarea:-webkit-autofill:focus,
+.dark textarea:-webkit-autofill:active,
+.dark select:-webkit-autofill,
+.dark select:-webkit-autofill:hover,
+.dark select:-webkit-autofill:focus,
+.dark select:-webkit-autofill:active {
+  -webkit-text-fill-color: #FAFAFA !important;
+  -webkit-box-shadow: 0 0 0px 1000px #0D0D0D inset !important;
+  box-shadow: 0 0 0px 1000px #0D0D0D inset !important;
+  caret-color: #67BAF4 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Ensure input text selection remains crisp and high-contrast */
+input::selection,
+textarea::selection {
+  background-color: #1E46EB !important;
+  color: #ffffff !important;
+}
+
+/* Base Body Styles */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+body {
+  background-color: var(--canvas);
+  color: var(--text-body);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  position: relative;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+/* Animations */
+@keyframes preloaderFill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes specularShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes celestialBreathe {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes flareBurst {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+@keyframes heroAuraPulse {
+  0%, 100% {
+    opacity: 0.30;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.05);
+  }
+}
+
+.animate-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+/* ─── FLUID AURORA MESH ANIMATIONS (LINEAR / APPLE STYLE) ─── */
+@keyframes auroraFloat1 {
+  0%, 100% {
+    transform: translate(-50%, -15%) scale(1);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translate(-45%, -5%) scale(1.1);
+    opacity: 0.85;
+  }
+}
+
+@keyframes auroraFloat2 {
+  0%, 100% {
+    transform: translate(20%, -10%) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate(10%, 10%) scale(1.15);
+    opacity: 0.75;
+  }
+}
+
+@keyframes auroraFloat3 {
+  0%, 100% {
+    transform: translate(-70%, 15%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-60%, 0%) scale(1.12);
+    opacity: 0.7;
+  }
+}
+
+/* ─── HORIZONTAL HORIZON WAVE SWEEP (VARIATION A) ─── */
+@keyframes horizonWaveSweep {
+  0% {
+    transform: translate(-120%, -50%) skewX(-12deg) scaleY(0.75);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -50%) skewX(-6deg) scaleY(1.08);
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate(120%, -50%) skewX(-12deg) scaleY(0.75);
+    opacity: 0;
+  }
+}
+
+.animate-horizon-wave {
+  animation: horizonWaveSweep 7.5s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes horizonWaveSweepSecondary {
+  0% {
+    transform: translate(-130%, -45%) skewX(8deg) scaleY(0.7);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate(-50%, -55%) skewX(4deg) scaleY(1.05);
+    opacity: 0.75;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(130%, -45%) skewX(8deg) scaleY(0.7);
+    opacity: 0;
+  }
+}
+
+.animate-horizon-wave-sec {
+  animation: horizonWaveSweepSecondary 7.5s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  animation-delay: 2.5s;
+  will-change: transform, opacity;
+}
+
+@keyframes circuitDash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.circuit-path {
+  animation: circuitDash 1.2s linear infinite;
+}
+
+/* Service Item Top Accent Line */
+.service-card-accent {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #1E46EB;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+}
+
+.service-card-accent:hover::before {
+  transform: scaleX(1);
+}
+
+@media (max-width: 767px) {
+  .service-card-accent::before {
+    transform: scaleX(1);
+    opacity: 0.9;
+    background: linear-gradient(90deg, #1E46EB, #67BAF4);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1E46EB;
+}
+
+/* ─── CIRCULAR VIEW TRANSITION (THEME REVEAL) ─── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* During circular theme toggle, merge main content into root so the entire viewport is cleanly clipped */
+html.theme-transitioning main {
+  view-transition-name: none !important;
+}
+
+html.theme-transitioning ::view-transition-old(page-content),
+html.theme-transitioning ::view-transition-new(page-content),
+html.theme-transitioning ::view-transition-group(page-content) {
+  animation: none !important;
+}
+
+/* ─── ROUTE PAGE VIEW TRANSITIONS (SILICON VALLEY / NATIVE APP STYLE) ─── */
+::view-transition-old(page-content),
+::view-transition-new(page-content) {
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(page-content) {
+  animation: 150ms cubic-bezier(0.4, 0, 1, 1) both pageDissolveOut;
+}
+
+::view-transition-new(page-content) {
+  animation: 200ms cubic-bezier(0.16, 1, 0.3, 1) both pageSpringIn;
+}
+
+@keyframes pageDissolveOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pageSpringIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── ORBITING BORDER BEAM ANIMATION ─── */
+@keyframes borderBeamSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-border-beam {
+  animation: borderBeamSpin 2.4s linear infinite;
+}
+
+/* ─── SPECULAR LIGHT SHIMMER (STRIPE / RAYCAST STYLE) ─── */
+@keyframes specularSweep {
+  0% {
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.85;
+  }
+  88% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(50%, 50%);
+    opacity: 0;
+  }
+}
+
+.animate-specular-shimmer {
+  animation: specularSweep 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes sheenSlide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(180%);
+  }
+}
+
+.animate-sheen-slide {
+  animation: sheenSlide 2.2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+/* ─── TEXT SHIMMER & RADIANT GRADIENT FLOW ─── */
+@keyframes textShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-text-shimmer {
+  background-size: 200% 200%;
+  animation: textShimmer 4.5s ease-in-out infinite;
+}
+
+/* Specular Badge Sheen */
+@keyframes badgeSheenSlide {
+  0% {
+    transform: translateX(-160%) skewX(-20deg);
+  }
+  20%, 100% {
+    transform: translateX(260%) skewX(-20deg);
+  }
+}
+
+.animate-badge-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-badge-sheen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  animation: badgeSheenSlide 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.dark .animate-badge-sheen::after {
+  background: linear-gradient(90deg, transparent, rgba(103, 186, 244, 0.25), transparent);
+}
+
+/* Stepper Pipeline Glow Dash */
+@keyframes pipelineDash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.animate-pipeline-dash {
+  animation: pipelineDash 1.2s linear infinite;
+}
+
+/* ─── PREFERS-REDUCED-MOTION SUPPORT (WCAG 2.1 AA) ─── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-border-beam,
+  .animate-specular-shimmer,
+  .animate-sheen-slide,
+  .animate-text-shimmer,
+  .animate-badge-sheen::after,
+  .animate-pipeline-dash,
+  .animate-glow,
+  .circuit-path,
+  .animate-fade-in-up {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .circuit-path,
+  .animate-pipeline-dash {
+    stroke-dashoffset: 0 !important;
+  }
+
+  svg animate,
+  svg animateMotion,
+  svg animateTransform {
+    display: none !important;
+  }
+
+  ::view-transition-old(page-content),
+  ::view-transition-new(page-content) {
+    animation: none !important;
+  }
+}
+
